@@ -222,12 +222,14 @@
   <script src="http://cdn.bootcss.com/axios/0.15.3/axios.min.js"></script>
   <script type="text/javascript">
     $(window).scroll(function(){
-      var scrollTop = $(this).scrollTop()*1.9
+      var scrollTop = $(this).scrollTop()*2.4
       if(scrollTop>parseInt($("#p").css("height"))){
         axios.post('http://localhost:3000/api/all-posts')
         .then(res =>
           res.data.posts.map(function (item,index,input) {
-            console.log(item)
+            $("#posts-title").append(item.title)
+            $("#posts-title").append(item.content)
+            $("#posts-title").append(item.author)
           })
         )
       }
